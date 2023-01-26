@@ -71,12 +71,13 @@ article {
 }
 article.article1 {
     display: grid;
-    background: url('img/img1.jpg') no-repeat fixed;
+    background: url('img/img2.png') no-repeat fixed;
     opacity: .7;
     /* background-image: linear-gradient(black, transparent); */
     /* background-position: center; */
     background-size: cover;
     height: 50vh;
+    box-shadow: -5 -5 5 black;
 }
 .article1 p {
     font-size: clamp(.95rem, 3.8vw, 1.8rem);
@@ -92,22 +93,134 @@ article.article1 {
 }
 
 .article2 {
-    background-color: tomato;
-    
+    /* background-color: tomato; */
+    padding: 20px;
     display: grid;
-    grid-template-areas: 
+    grid-template-areas:
+    'head head head'
     'card1 card2 card3'
     'card1 card2 card3';
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+.article2 h3 {
+    grid-area: head;
+    margin: 35px 0 45px 0;
+    font-size: clamp(.95rem, 1.1rem, 2vw);
+    text-align: center;
+}
+.article2:has(.card1, .card2, .card3) h4 {
+    margin-bottom: 15px;
+    border-bottom: .13rem solid white;
+    padding: 10px;
+    font-size: clamp(.85rem, 1.2vw, 1.4rem);
+    text-transform: capitalize;
+    transition: .4s ease;
+}
+.article2:has(.card1, .card2, .card3) h4:hover {
+    background-color: white;
+    color: #1a1818;
+    transition: .4s ease;
+}
+.article2:has(.card1, .card2, .card3) p {
+    padding: 10px;
+    text-transform: capitalize;
+    word-break: break-all;
 }
 .card1 {
     grid-area: card1;
-    background-color: dodgerblue;
+    /* background-color: dodgerblue; */
 }
 .card2 {
     grid-area: card2;
-    background-color: darkorange;
+    /* background-color: darkorange; */
 }
 .card3 {
     grid-area: card3;
-    background-color: darkorchid;
+    /* background-color: darkorchid; */
+}
+.article2 caption > p {
+    font-variant: 5px;
+}
+@media (width <= 576px) {
+    .article2 {
+        grid-template-areas:
+        'head head head'
+        'card1 card1 card1'
+        'card2 card2 card2'
+        'card3 card3 card3';
+    }
+}
+
+.article3 {
+    display: grid;
+    grid-template-areas:
+    'h3p h3p h3p h3p'
+    'photo1 photo2 photo3 photo4';
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 5px;
+}
+.article3 > h3 {
+    grid-area: h3p;
+    padding: 15px;
+    margin: 20px 0 10px 0;
+    text-align: center;
+    font-size: clamp(.85rem, 18px, 1.2rem);
+}
+.article3 div[class*=photo] {
+    width: 200px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.article3 div[class*=photo] img {
+    width: 100%;
+    border: .05rem solid black;
+}
+.article3 div[class*=photo] h3 {
+    border-top: .15rem solid white;
+    text-align: center;
+    padding: 2px;
+}
+.photo1 {
+    grid-area: photo1;
+}
+.photo2 {
+    grid-area: photo2;
+}
+.photo3 {
+    grid-area: photo3;
+}
+.photo4 {
+    grid-area: photo4;
+}
+@media (width <= 576px) {
+    .article3 {
+        grid-template-areas: 
+        'h3p'
+        'photo1'
+        'photo2'
+        'photo3'
+        'photo4';
+        width: 100%;
+    }
+    .article3 div[class*=photo] {
+        width: 65%;
+        margin: 15px auto;
+    }
+    .article3 > h3 {
+        grid-area: h3p;
+    }
+}
+@media (576px < width <= 820px) {
+    .article3 {
+        grid-template-areas: 
+        'h3p h3p'
+        'photo1 photo2'
+        'photo3 photo4';
+        width: 100%;
+    }
+    .article3 div[class*=photo] {
+        width: 65%;
+        margin-top: 15px;
+    }
 }
