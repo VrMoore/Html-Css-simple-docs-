@@ -139,8 +139,11 @@ article.article1 {
     grid-area: card3;
     /* background-color: darkorchid; */
 }
-.article2 caption > p {
-    font-variant: 5px;
+.article2 caption {
+    font-size: .5rem !important;
+    font-weight: 100;
+    word-spacing: 1px;
+    letter-spacing: 1.10px;
 }
 @media (width <= 576px) {
     .article2 {
@@ -164,17 +167,21 @@ article.article1 {
     grid-area: h3p;
     padding: 15px;
     margin: 20px 0 10px 0;
-    text-align: center;
     font-size: clamp(.85rem, 18px, 1.2rem);
 }
 .article3 div[class*=photo] {
     width: 200px;
     overflow: hidden;
     margin: 0 auto;
+    text-align-last: center;
+    text-align: center;
 }
 .article3 div[class*=photo] img {
     width: 100%;
     border: .05rem solid black;
+    opacity: .7;
+    margin-bottom: 20px;
+    filter: brightness(80%);
 }
 .article3 div[class*=photo] h3 {
     border-top: .15rem solid white;
@@ -211,7 +218,7 @@ article.article1 {
         grid-area: h3p;
     }
 }
-@media (576px < width <= 820px) {
+@media (576px < width <= 890px) {
     .article3 {
         grid-template-areas: 
         'h3p h3p'
@@ -223,4 +230,65 @@ article.article1 {
         width: 65%;
         margin-top: 15px;
     }
+}
+
+.article4 {
+    display: grid;
+    /* grid-template-areas: 
+    'head head head'
+    'ticket1 ticket2 ticket3'
+    'caption caption caption';
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px; */
+    background-color: tomato;
+}
+.header-art4 {
+    grid-area: head;
+}
+.ticket-container {
+    background-color: salmon;
+    grid-template-areas: 
+    'head head head'
+    'ticket1 ticket2 ticket3'
+    'capt capt capt';
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+}
+
+/* tes */
+.ticket-container div[class*=ticket]:nth-child(even) {
+    background-color: dodgerblue !important;
+}
+
+.ticket-container div[class*=ticket] {
+    background-color: white;
+    color: #141313;
+}
+.ticket-container h4 {
+    font: clamp(.85rem, 18px, 1.2rem);
+    font-weight: 300;
+}
+.ticket-container button {
+    padding: 5px 25px;
+    border-radius: 10px / 50%;
+    color: white;
+    background-color: #141313;
+    transition: .4s ease;
+}
+.ticket-container button:hover {
+    color: #141313;
+    background-color: white;
+    transition: .5s ease;
+}
+.ticket1 {
+    grid-area: ticket1;
+}
+.ticket2 {
+    grid-area: ticket2;
+}
+.ticket3 {
+    grid-area: ticket3;
+}
+.caption-art4 {
+    grid-area: capt;
 }
